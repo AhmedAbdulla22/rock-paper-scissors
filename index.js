@@ -1,6 +1,11 @@
 let computerScore = 0;
 let userScore = 0;
 
+const roundChoicesPara = document.querySelector('#round-choices');
+const roundResultPara = document.querySelector('#round-result');
+const gameResultPara = document.querySelector('#game-result');
+
+
 function getRandom(max) {
     return Math.floor(Math.random() * max);
 }
@@ -22,17 +27,20 @@ function getUserChoice(e) {
 }
 
 function playRound(computerChoice,userChoice) {
+    let result = '';
     if(userChoice === computerChoice) {
         userScore++;
         computerScore++;
-        console.log("Draw");
+        result = "Draw";
     } else if(userChoice === "rock" && computerChoice === "scissors" || userChoice === "scissors" && computerChoice === "paper" || userChoice === "paper" && computerChoice === "rock") {
         userScore++;
-        console.log("User Won");
+        result = "User Won";
     } else {
         computerScore++;
-        console.log("Computer Won");
+        result = "Computer Won";
     }
+
+    roundResultPara.textContent = `Round Result: ${result}`;
 }
 
 
@@ -67,6 +75,10 @@ const btns = document.querySelector('#buttons-container');
 btns.addEventListener("click",(e) => {
     const computerChoice = getComputerChoice();
     const userChoice = getUserChoice(e);
-    console.log(`computer choice: ${computerChoice}\nuser choice: ${userChoice}`);
+
+    roundChoicesPara.innerText = `computer choice: ${computerChoice} 
+    user choice: ${userChoice}`;
+    
+
     playRound(computerChoice,userChoice);
 })
