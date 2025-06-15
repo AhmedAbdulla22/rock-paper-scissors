@@ -14,7 +14,8 @@ function getComputerChoice() {
 }
 
 function getUserChoice() {
-    switch(getRandom(3)) {
+    const choice = prompt("Rock:0 , Paper:1 ,Scissors:2 ")
+    switch(choice) {
         case 0: 
             return "rock";
         case 1:
@@ -23,3 +24,4 @@ function getUserChoice() {
             return "scissor"
     }
 }
+
