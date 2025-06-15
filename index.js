@@ -64,33 +64,6 @@ function resetTheGame() {
     gameFinished = false;
 }
 
-
-
-// function playGame() {
-    
-//     for (let round = 1; round <= 5; round++) {
-//         const computerChoice = getComputerChoice();
-//         const userChoice = getUserChoice();
-        
-//         playRound(computerChoice,userChoice);
-//     }
-    
-//     let result;
-//     if(userScore === computerScore) {
-//         result = "Draw";
-//     } else if ( userScore > computerScore) {
-//         result = "user won";
-//     } else {
-//         result = "computer won";
-//     }
-
-//     console.log(`Result:${result}\n
-//         Computer Score: ${computerScore}\n
-//         User Score: ${userScore}`);
-// }
-
-// playGame();
-
 const btns = document.querySelector('#buttons-container');
 
 btns.addEventListener("click",(e) => {
