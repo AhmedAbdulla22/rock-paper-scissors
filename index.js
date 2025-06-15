@@ -12,19 +12,16 @@ function getComputerChoice() {
         case 1:
             return "paper";
         default:
-            return "scissor"
+            return "scissors"
     }
 }
 
 function getUserChoice() {
-    const choice = prompt("Rock:0 , Paper:1 ,Scissors:2 ")
-    switch(choice) {
-        case 0: 
-            return "rock";
-        case 1:
-            return "paper";
-        default:
-            return "scissor"
-    }
+    const choice = prompt("Enter one of them: Rock ,Paper ,Scissors");
+    return choice.toLowerCase();
+}
+
+function playRound(computerChoice,userChoice) {
+
 }
 
