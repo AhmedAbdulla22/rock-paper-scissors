@@ -1,5 +1,6 @@
 let computerScore = 0;
 let userScore = 0;
+let gameFinished = false;
 
 const roundChoicesPara = document.querySelector('#round-choices');
 const roundResultPara = document.querySelector('#round-result');
@@ -40,7 +41,27 @@ function playRound(computerChoice,userChoice) {
         result = "Computer Won";
     }
 
-    roundResultPara.textContent = `Round Result: ${result}`;
+    roundResultPara.innerText = `Round Result: ${result}\nUser Score:${userScore}\nComputer Score:${computerScore}`;
+    if(computerScore === 5 || userScore === 5) {
+        let gameResult = '';
+        if(computerScore === 5 && userScore === 5){
+        gameResult = "Game Result is Draw!";
+        }
+        else if(computerScore === 5) {
+        gameResult = "Computer Won the Game";
+        } else if(userScore === 5) {
+        gameResult = "User Won the Game";
+        }
+        gameFinished = true;
+        gameResultPara.innerText = gameResult;
+    }
+    
+}
+
+function resetTheGame() {
+    userScore = computerScore = 0;
+    gameResultPara.textContent = roundResultPara.textContent = roundChoicesPara.textContent = '';
+    gameFinished = false;
 }
 
 
@@ -73,8 +94,12 @@ function playRound(computerChoice,userChoice) {
 const btns = document.querySelector('#buttons-container');
 
 btns.addEventListener("click",(e) => {
-    const computerChoice = getComputerChoice();
     const userChoice = getUserChoice(e);
+    const computerChoice = getComputerChoice();
+
+    if(gameFinished) {
+        resetTheGame();
+    }
 
     roundChoicesPara.innerText = `computer choice: ${computerChoice} 
     user choice: ${userChoice}`;
