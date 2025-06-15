@@ -30,8 +30,6 @@ function getUserChoice(e) {
 function playRound(computerChoice,userChoice) {
     let result = '';
     if(userChoice === computerChoice) {
-        userScore++;
-        computerScore++;
         result = "Draw";
     } else if(userChoice === "rock" && computerChoice === "scissors" || userChoice === "scissors" && computerChoice === "paper" || userChoice === "paper" && computerChoice === "rock") {
         userScore++;
@@ -67,6 +65,8 @@ function resetTheGame() {
 const btns = document.querySelector('#buttons-container');
 
 btns.addEventListener("click",(e) => {
+    if(e.target.tagName !== "BUTTON") return;
+
     const userChoice = getUserChoice(e);
     const computerChoice = getComputerChoice();
 
